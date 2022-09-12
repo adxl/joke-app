@@ -24,7 +24,7 @@ jobs:
     steps:
       - id: tagname
         run: echo "::set-output name=commit::$(git rev-parse HEAD)"
-      - run: docker build -t joke-app:${{ steps.tagname.outputs.commit }}
+      - run: docker build -t joke-app:${{ steps.tagname.outputs.commit }} .
       - run: docker push adxl/joke-app:${{ steps.tagname.outputs.commit }}
 
 
