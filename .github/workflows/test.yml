@@ -22,12 +22,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - id: tagname
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: adxl
+          password: ${{ secrets.HUB_API_KEY }}
+
+      - name: Commit SHA
+        id: tagname
         run: echo "::set-output name=commit::$(git rev-parse HEAD)"
-      - run: echo ${{ steps.tagname.outputs.commit }}
-      - run: docker build -t joke-app:${{ steps.tagname.outputs.commit }} .
-      - run: docker push adxl/joke-app:${{ steps.tagname.outputs.commit }}
+
+      - name: Build image
+        run: docker build -t joke-app:${{ steps.tagname.outputs.commit }} .
+
+      - name: Publish image
+        run: docker push adxl/joke-app:${{ steps.tagname.outputs.commit }}
 
 
   # deploy:
