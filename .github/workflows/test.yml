@@ -1,0 +1,14 @@
+name: CI Workflow
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log the user
+        run : |
+          export USER=adxl
+          echo $USER
