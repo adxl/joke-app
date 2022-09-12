@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - id: tagname
         run: echo "::set-output name=commit::$(git rev-parse HEAD)"
       - run: echo ${{ steps.tagname.outputs.commit }}
