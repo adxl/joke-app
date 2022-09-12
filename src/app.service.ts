@@ -8,7 +8,7 @@ export class AppService {
 
   async getJoke(): Promise<Joke> {
     const response = await this.httpService.get(
-      'https://v2.jokeapi.dev/joke/Programming,Spooky?lang=fr
+      'https://v2.jokeapi.dev/joke/Programming,Spooky?lang=fr',
       {
         headers: {
           accept: 'application/json',
