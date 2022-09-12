@@ -36,7 +36,7 @@ jobs:
         run: echo "::set-output name=commit::$(git rev-parse HEAD)"
 
       - name: Build image
-        run: docker build -t joke-app:${{ steps.tagname.outputs.commit }} .
+        run: docker build -t adxl/joke-app:${{ steps.tagname.outputs.commit }} .
 
       - name: Publish image
         run: docker push adxl/joke-app:${{ steps.tagname.outputs.commit }}
