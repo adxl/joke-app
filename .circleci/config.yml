@@ -41,7 +41,7 @@ workflows:
           requires:
             - node/run
             - node/test
-          app-name: "joke-app-iw4"
+          app-name: "adxl-joke-app-circleci"
           filters:
             branches:
               only:
