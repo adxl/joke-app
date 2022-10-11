@@ -6,7 +6,7 @@ pipeline {
 
   environment {
     VERSION = "latest"
-    registry = "registry.heroku.com/joke-jenkins/web"
+    registry = "registry.heroku.com/joke-app-jenkins/web"
   }
 
   stages {
@@ -38,7 +38,7 @@ pipeline {
           VERSION = sh([script: "node -e \"console.log(require(\'./package.json\').version)\"", returnStdout: true]).trim()
 
           docker.withRegistry('https://registry.heroku.com', 'herokuId') {
-            sh "docker buildx build --platform linux/amd64 -t ${registry}:$VERSION ."
+            sh "docker build -t ${registry}:$VERSION ."
             sh "docker push ${registry}:$VERSION"
           }
         }
