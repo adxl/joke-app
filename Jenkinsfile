@@ -25,7 +25,7 @@ pipeline {
             sh "pnpm build"
             sh "pnpm test"
           } catch (Exception e) {
-            // mail(admin@gmail.com)
+            // mail(adeladmin@gmail.com)
             throw e
           }
         }
