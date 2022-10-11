@@ -42,6 +42,7 @@ workflows:
             - node/run
             - node/test
           app-name: "adxl-joke-app-circleci"
+
           filters:
             branches:
               only:
