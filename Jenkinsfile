@@ -20,7 +20,7 @@ pipeline {
         script {
           try {
             sh "echo ${params.NODE_VERSION}"
-            sh "npm -v"
+            sh "node -v"
             sh "npm install -g pnpm"
             sh "pnpm install"
             sh "pnpm build"
